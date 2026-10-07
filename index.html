@@ -1,105 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PlantCare</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f7f2;color:#24352a}
-.app{max-width:430px;margin:auto;min-height:100vh;background:#fbfdf9;position:relative;padding-bottom:82px}
-header{padding:28px 22px 16px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:25px;font-weight:800;letter-spacing:-.6px}.sub{color:#718076;font-size:13px;margin-top:3px}
-.iconbtn{border:0;background:#edf3eb;border-radius:14px;width:42px;height:42px;font-size:20px}
-main{padding:0 18px}.hero{background:#dfeee0;border-radius:24px;padding:20px;margin-bottom:18px}
-.hero h1{margin:0 0 7px;font-size:25px}.hero p{margin:0;color:#53685a;font-size:14px;line-height:1.45}
-.section{display:flex;justify-content:space-between;align-items:center;margin:20px 3px 11px}.section h2{font-size:17px;margin:0}.link{color:#4d7957;font-size:13px;border:0;background:none}
-.card{background:white;border:1px solid #e7eee6;border-radius:20px;padding:15px;margin-bottom:11px;box-shadow:0 3px 14px #263c2610}
-.plant{display:flex;gap:13px;align-items:center}.plantimg{width:58px;height:58px;border-radius:17px;background:#e4efe4;display:grid;place-items:center;font-size:31px}
-.info{flex:1}.name{font-weight:750;font-size:15px}.meta{font-size:12px;color:#7a887d;margin-top:3px}
-.badge{font-size:11px;padding:6px 9px;border-radius:10px;background:#fff0cf;color:#8b661e;white-space:nowrap}.ok{background:#e1f2e3;color:#47724e}
-.task{display:flex;align-items:center;gap:12px}.task .emoji{font-size:23px;width:35px;text-align:center}.task .info{min-width:0}.task button{border:0;border-radius:11px;background:#4d7957;color:#fff;padding:9px 11px;font-weight:650}
-.progress{height:7px;background:#e9eee9;border-radius:99px;margin-top:9px;overflow:hidden}.progress span{display:block;height:100%;background:#67936d;border-radius:99px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.stat{padding:16px}.stat b{font-size:23px}.stat span{display:block;color:#7b887e;font-size:12px;margin-top:3px}
-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);height:72px;background:#fff;border-top:1px solid #e8eee8;display:flex;justify-content:space-around;align-items:center;z-index:5}
-nav button{background:none;border:0;color:#849087;font-size:11px;display:flex;flex-direction:column;gap:4px;align-items:center}nav button.active{color:#477451;font-weight:700}nav i{font-style:normal;font-size:21px}
-.modal{position:fixed;inset:0;background:#0006;display:none;align-items:flex-end;z-index:10}.sheet{background:#fff;width:min(430px,100%);margin:auto;border-radius:26px 26px 0 0;padding:22px;max-height:90vh;overflow:auto}
-.sheet h2{margin-top:0}.field{margin:13px 0}.field label{display:block;font-size:12px;color:#6e7d72;margin-bottom:6px}.field input,.field select{width:100%;padding:12px;border:1px solid #dce5dc;border-radius:12px;font:inherit;background:#fafcfa}
-.primary{width:100%;padding:13px;border:0;border-radius:14px;background:#4d7957;color:white;font-weight:750;font-size:15px;margin-top:8px}.secondary{width:100%;padding:12px;border:1px solid #dce5dc;border-radius:14px;background:white;font-weight:650;margin-top:8px}
-.empty{text-align:center;padding:34px 15px;color:#7c887f}.hidden{display:none!important}
-</style>
-</head>
-<body>
-<div class="app">
-<header><div><div class="logo">🌿 PlantCare</div><div class="sub">Your plants, on schedule.</div></div><button class="iconbtn" onclick="openAdd()">＋</button></header>
-<main id="home">
-<section class="hero"><h1>Good morning 🌱</h1><p id="heroText">Let’s keep your plants happy and healthy.</p></section>
-<div class="section"><h2>Needs attention</h2><button class="link" onclick="show('plants')">View all</button></div>
-<div id="tasks"></div>
-<div class="section"><h2>My plants</h2><button class="link" onclick="show('plants')">See all</button></div>
-<div id="plantPreview"></div>
-<div class="section"><h2>This week</h2></div>
-<div class="grid"><div class="card stat"><b id="waterCount">0</b><span>watering tasks</span></div><div class="card stat"><b id="fertCount">0</b><span>fertilizing tasks</span></div></div>
-</main>
-<main id="plants" class="hidden">
-<div class="section"><h2>My plants</h2><button class="link" onclick="openAdd()">＋ Add plant</button></div>
-<div id="allPlants"></div>
-</main>
-<main id="history" class="hidden">
-<div class="section"><h2>Care history</h2></div><div id="historyList"></div>
-</main>
-<nav>
-<button class="active" data-page="home" onclick="show('home')"><i>⌂</i>Home</button>
-<button data-page="plants" onclick="show('plants')"><i>🌿</i>Plants</button>
-<button data-page="history" onclick="show('history')"><i>◷</i>History</button>
-</nav>
-</div>
-
-<div class="modal" id="modal"><div class="sheet">
-<h2>Add a plant</h2>
-<div class="field"><label>Plant name</label><input id="pname" placeholder="e.g. Ficus Bonsai"></div>
-<div class="field"><label>Type</label><select id="ptype"><option>Ficus Bonsai</option><option>Pothos</option><option>Snake Plant</option><option>Monstera</option><option>Succulent</option><option>Other</option></select></div>
-<div class="field"><label>Water every (days)</label><input id="waterEvery" type="number" min="1" value="7"></div>
-<div class="field"><label>Fertilize every (days)</label><input id="fertEvery" type="number" min="1" value="30"></div>
-<div class="field"><label>Last watered</label><input id="lastWatered" type="date"></div>
-<button class="primary" onclick="addPlant()">Add plant</button><button class="secondary" onclick="closeModal()">Cancel</button>
-</div></div>
-
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f7f2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PlantCare"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><title>PlantCare</title><style>
+*{box-sizing:border-box}body{margin:0;background:#edf2ea;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#203027}.app{max-width:460px;margin:auto;min-height:100vh;background:#f7f9f5;padding-bottom:85px}header{padding:28px 20px 14px;display:flex;justify-content:space-between;align-items:center}.brand{font-size:26px;font-weight:850}.sub,.meta{color:#78847b;font-size:12px}.add{border:0;background:#e1ede0;color:#416b4b;width:44px;height:44px;border-radius:15px;font-size:24px}main{padding:0 18px}.hidden{display:none}.hero{background:linear-gradient(135deg,#dbeadb,#eef4e9);padding:22px;border-radius:27px;margin-bottom:21px}.hero h1{margin:0 0 7px;font-size:26px}.hero p{margin:0;color:#586c5e;font-size:14px}.section{display:flex;justify-content:space-between;align-items:center;margin:21px 3px 11px}.section h2{margin:0;font-size:18px}.link{border:0;background:none;color:#477452;font-weight:650}.card{background:white;border:1px solid #e3eae2;border-radius:21px;padding:15px;margin-bottom:11px;box-shadow:0 8px 25px #243c2810}.row{display:flex;align-items:center;gap:13px}.grow{flex:1}.pic{width:57px;height:57px;border-radius:18px;background:#e6efe3;display:grid;place-items:center;font-size:30px}.name{font-weight:780;font-size:15px}.meta{margin-top:4px}.badge{font-size:11px;padding:6px 9px;border-radius:10px;background:#f6ead1;color:#806122;white-space:nowrap}.good{background:#e2f0e2;color:#47724e}.done{border:0;background:#477452;color:white;border-radius:11px;padding:9px 11px;font-weight:700}.taskicon{font-size:23px;width:36px;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.stat b{font-size:25px}.stat span{display:block;color:#78847b;font-size:12px;margin-top:4px}.empty{text-align:center;color:#78847b;padding:30px}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(460px,100%);height:75px;background:#fff;border-top:1px solid #e4eae3;display:flex;justify-content:space-around;align-items:center}.nav button{border:0;background:none;color:#89938b;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center}.nav button.active{color:#477452;font-weight:750}.nav i{font-style:normal;font-size:21px}.overlay{position:fixed;inset:0;background:#0006;display:none;align-items:flex-end;z-index:20}.sheet{background:white;width:min(460px,100%);margin:auto;border-radius:28px 28px 0 0;padding:22px;max-height:90vh;overflow:auto}.sheet h2{margin-top:0}.field{margin:12px 0}.field label{display:block;font-size:12px;color:#78847b;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #dce5dc;border-radius:12px;font:inherit}.field textarea{min-height:70px}.primary,.secondary,.danger{width:100%;padding:13px;border-radius:14px;font-weight:750;margin-top:8px}.primary{border:0;background:#477452;color:white}.secondary{border:1px solid #e0e7df;background:white}.danger{border:0;background:#fff0ee;color:#9b4c43}.profile{background:linear-gradient(135deg,#dcebdc,#f0f5ed);border-radius:27px;padding:22px}.profile .big{font-size:52px}.profile h1{margin:8px 0 3px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.chip{font-size:11px;background:white;padding:7px 9px;border-radius:10px}.back{border:0;background:none;color:#477452;font-weight:700;margin-bottom:10px}.note{font-size:13px;line-height:1.55;color:#59675e}
+</style></head><body><div class="app"><header><div><div class="brand">PlantCare 🌿</div><div class="sub" id="date"></div></div><button class="add" onclick="openAdd()">＋</button></header>
+<main id="home"><div class="hero"><h1 id="greet"></h1><p id="summary"></p></div><div class="section"><h2>Today</h2><button class="link" onclick="show('schedule')">Schedule</button></div><div id="tasks"></div><div class="section"><h2>Your plants</h2><button class="link" onclick="show('plants')">See all</button></div><div id="preview"></div><div class="section"><h2>Overview</h2></div><div class="grid"><div class="card stat"><b id="pc">0</b><span>plants</span></div><div class="card stat"><b id="hc">0</b><span>completed tasks</span></div></div></main>
+<main id="plants" class="hidden"><div class="section"><h2>My plants</h2><button class="link" onclick="openAdd()">＋ Add</button></div><div id="plantlist"></div></main>
+<main id="schedule" class="hidden"><div class="section"><h2>Care schedule</h2></div><div id="schedulelist"></div></main>
+<main id="history" class="hidden"><div class="section"><h2>Care history</h2></div><div id="historylist"></div></main>
+<main id="detail" class="hidden"><button class="back" onclick="show('plants')">‹ My plants</button><div id="detailbody"></div></main>
+<div class="nav"><button data-p="home" class="active" onclick="show('home')"><i>⌂</i>Home</button><button data-p="plants" onclick="show('plants')"><i>🌿</i>Plants</button><button data-p="schedule" onclick="show('schedule')"><i>◷</i>Schedule</button><button data-p="history" onclick="show('history')"><i>✓</i>History</button></div></div>
+<div class="overlay" id="add"><div class="sheet"><h2>Add a plant</h2><div class="field"><label>Name</label><input id="n" placeholder="Ficus Bonsai"></div><div class="field"><label>Type</label><select id="t"><option>Ficus Bonsai</option><option>Monstera</option><option>Pothos</option><option>Snake Plant</option><option>Succulent</option><option>Peace Lily</option><option>Other</option></select></div><div class="field"><label>Water every (days)</label><input id="w" type="number" value="7"></div><div class="field"><label>Fertilize every (days)</label><input id="f" type="number" value="30"></div><div class="field"><label>Light</label><input id="l" value="Bright indirect"></div><div class="field"><label>Room</label><input id="loc" placeholder="Living room"></div><div class="field"><label>Notes</label><textarea id="notes"></textarea></div><button class="primary" onclick="addPlant()">Add plant</button><button class="secondary" onclick="closeAdd()">Cancel</button></div></div>
 <script>
-const key='plantcare-demo-v1';
-let data=JSON.parse(localStorage.getItem(key)||'null')||{
- plants:[
-  {id:1,name:'Ficus Bonsai',type:'Ficus Bonsai',emoji:'🌳',waterEvery:7,fertEvery:30,lastWatered:'2026-10-02'},
-  {id:2,name:'Monstera',type:'Monstera',emoji:'🌿',waterEvery:8,fertEvery:30,lastWatered:'2026-10-05'},
-  {id:3,name:'Snake Plant',type:'Snake Plant',emoji:'🪴',waterEvery:18,fertEvery:45,lastWatered:'2026-09-25'}
- ],history:[]
-};
-const today=new Date(); today.setHours(0,0,0,0);
-function save(){localStorage.setItem(key,JSON.stringify(data))}
-function date(s){let d=new Date(s+'T00:00:00');return d}
-function daysSince(s){return Math.floor((today-date(s))/86400000)}
-function due(p){return daysSince(p.lastWatered)>=p.waterEvery}
-function nextDate(p){let d=date(p.lastWatered);d.setDate(d.getDate()+p.waterEvery);return d}
-function fmt(d){return d.toLocaleDateString(undefined,{month:'short',day:'numeric'})}
-function show(page){
- document.querySelectorAll('main').forEach(x=>x.classList.add('hidden'));document.getElementById(page).classList.remove('hidden');
- document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));render()
-}
-function render(){
- let duePlants=data.plants.filter(due), tasks=document.getElementById('tasks');
- document.getElementById('heroText').textContent=duePlants.length?`${duePlants.length} plant${duePlants.length>1?'s':''} need attention today.`:'Everything is on schedule. Nice work!';
- tasks.innerHTML=duePlants.length?duePlants.map(p=>`<div class="card task"><div class="emoji">${p.emoji}</div><div class="info"><div class="name">${p.name}</div><div class="meta">Watering is due · every ${p.waterEvery} days</div></div><button onclick="water(${p.id})">Watered</button></div>`).join(''):`<div class="card empty">✨ No watering tasks are due today.</div>`;
- document.getElementById('plantPreview').innerHTML=data.plants.slice(0,3).map(plantCard).join('');
- document.getElementById('allPlants').innerHTML=data.plants.length?data.plants.map(plantCard).join(''):`<div class="card empty">Add your first plant to get started.</div>`;
- let w=data.plants.filter(due).length,f=data.plants.filter(p=>daysSince(p.lastWatered)>=p.fertEvery).length;
- document.getElementById('waterCount').textContent=w;document.getElementById('fertCount').textContent=f;
- document.getElementById('historyList').innerHTML=data.history.length?data.history.slice().reverse().map(h=>`<div class="card task"><div class="emoji">${h.action==='Watered'?'💧':'🧪'}</div><div class="info"><div class="name">${h.action} · ${h.name}</div><div class="meta">${h.date}</div></div></div>`).join(''):`<div class="card empty">Your completed care tasks will appear here.</div>`;
-}
-function plantCard(p){let dueNow=due(p);let d=nextDate(p);return `<div class="card plant"><div class="plantimg">${p.emoji}</div><div class="info"><div class="name">${p.name}</div><div class="meta">${p.type} · Water every ${p.waterEvery} days</div></div><span class="badge ${dueNow?'':'ok'}">${dueNow?'Water now':'Next '+fmt(d)}</span></div>`}
-function water(id){let p=data.plants.find(x=>x.id===id);p.lastWatered=new Date().toISOString().slice(0,10);data.history.push({name:p.name,action:'Watered',date:new Date().toLocaleDateString()});save();render()}
-function openAdd(){document.getElementById('modal').style.display='flex';document.getElementById('lastWatered').value=new Date().toISOString().slice(0,10)}
-function closeModal(){document.getElementById('modal').style.display='none'}
-function addPlant(){let name=document.getElementById('pname').value.trim();if(!name)return alert('Please enter a plant name.');let type=document.getElementById('ptype').value;let emoji={ 'Ficus Bonsai':'🌳','Pothos':'🌿','Snake Plant':'🪴','Monstera':'🌿','Succulent':'🌵','Other':'🌱'}[type]||'🌱';data.plants.push({id:Date.now(),name,type,emoji,waterEvery:+document.getElementById('waterEvery').value||7,fertEvery:+document.getElementById('fertEvery').value||30,lastWatered:document.getElementById('lastWatered').value||new Date().toISOString().slice(0,10)});save();closeModal();document.getElementById('pname').value='';render();show('plants')}
-render();
-</script>
-</body>
-</html>
+const K='plantcare-v2';let today=new Date();today.setHours(0,0,0,0);const iso=()=>new Date().toISOString().slice(0,10);let db=JSON.parse(localStorage.getItem(K)||'null')||{plants:[{id:1,name:'Ficus Bonsai',type:'Ficus Bonsai',emoji:'🌳',water:7,fert:30,light:'Bright indirect',location:'Living room',lastWater:'2026-10-02',lastFert:'2026-09-12',notes:'Check the top layer of soil before watering.'},{id:2,name:'Monstera',type:'Monstera',emoji:'🌿',water:8,fert:30,light:'Bright indirect',location:'Bedroom',lastWater:'2026-10-05',lastFert:'2026-09-20',notes:'Rotate occasionally for even growth.'},{id:3,name:'Snake Plant',type:'Snake Plant',emoji:'🪴',water:18,fert:45,light:'Low light',location:'Hallway',lastWater:'2026-09-25',lastFert:'2026-09-01',notes:'Allow soil to dry well between waterings.'}],history:[]};
+function save(){localStorage.setItem(K,JSON.stringify(db))}function d(s){return new Date(s+'T00:00:00')}function days(s){return Math.floor((today-d(s))/86400000)}function due(p,k){return k==='Water'?days(p.lastWater)>=p.water:days(p.lastFert)>=p.fert}function next(s,n){let x=d(s);x.setDate(x.getDate()+n);return x}function fmt(x){return x.toLocaleDateString(undefined,{month:'short',day:'numeric'})}function em(t){return {'Ficus Bonsai':'🌳','Monstera':'🌿','Pothos':'🌿','Snake Plant':'🪴','Succulent':'🌵','Peace Lily':'🪷','Other':'🌱'}[t]||'🌱'}
+function show(p){document.querySelectorAll('main').forEach(x=>x.classList.add('hidden'));document.getElementById(p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.p===p));render()}
+function plantCard(p){let x=due(p,'Water');return `<div class="card row" onclick="detail(${p.id})"><div class="pic">${p.emoji}</div><div class="grow"><div class="name">${p.name}</div><div class="meta">${p.type}${p.location?' · '+p.location:''}</div></div><span class="badge ${x?'':'good'}">${x?'Water now':'Next '+fmt(next(p.lastWater,p.water))}</span></div>`}
+function task(p,k){let water=k==='Water',x=due(p,k),last=water?p.lastWater:p.lastFert,freq=water?p.water:p.fert;return `<div class="card row"><div class="taskicon">${water?'💧':'🧪'}</div><div class="grow"><div class="name">${k} · ${p.name}</div><div class="meta">${x?'Due now':'Next '+fmt(next(last,freq))} · every ${freq} days</div></div><button class="done" onclick="complete(${p.id},'${k}')">Done</button></div>`}
+function render(){let now=new Date();document.getElementById('date').textContent=now.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});document.getElementById('greet').textContent=(now.getHours()<12?'Good morning':now.getHours()<18?'Good afternoon':'Good evening')+' 🌱';let a=db.plants.flatMap(p=>['Water','Fertilize'].filter(k=>due(p,k)).map(k=>({p,k})));document.getElementById('summary').textContent=a.length?`${a.length} care task${a.length===1?'':'s'} need attention today.`:'Everything is on schedule. Your plants are all caught up.';document.getElementById('tasks').innerHTML=a.length?a.map(x=>task(x.p,x.k)).join(''):'<div class="card empty">✨ No care tasks due today.</div>';document.getElementById('preview').innerHTML=db.plants.slice(0,3).map(plantCard).join('');document.getElementById('plantlist').innerHTML=db.plants.map(plantCard).join('')||'<div class="card empty">Add your first plant.</div>';document.getElementById('schedulelist').innerHTML=db.plants.flatMap(p=>[task(p,'Water'),task(p,'Fertilize')]).join('');document.getElementById('pc').textContent=db.plants.length;document.getElementById('hc').textContent=db.history.length;document.getElementById('historylist').innerHTML=db.history.length?db.history.slice().reverse().map(h=>`<div class="card row"><div class="taskicon">${h.kind==='Water'?'💧':'🧪'}</div><div><div class="name">${h.kind} · ${h.name}</div><div class="meta">${d(h.date).toLocaleDateString()}</div></div></div>`).join(''):'<div class="card empty">Completed care tasks will appear here.</div>'}
+function complete(id,k){let p=db.plants.find(x=>x.id===id);if(k==='Water')p.lastWater=iso();else p.lastFert=iso();db.history.push({name:p.name,kind:k,date:iso()});save();render()}
+function detail(id){let p=db.plants.find(x=>x.id===id);show('detail');document.getElementById('detailbody').innerHTML=`<div class="profile"><div class="big">${p.emoji}</div><h1>${p.name}</h1><div class="meta">${p.type}${p.location?' · '+p.location:''}</div><div class="chips"><span class="chip">☀️ ${p.light}</span><span class="chip">💧 ${p.water} days</span><span class="chip">🧪 ${p.fert} days</span></div></div><div class="section"><h2>Care</h2></div>${task(p,'Water')}${task(p,'Fertilize')}<div class="section"><h2>Notes</h2></div><div class="card note">${p.notes||'No notes yet.'}</div><button class="danger" onclick="removePlant(${p.id})">Delete plant</button>`}
+function openAdd(){document.getElementById('add').style.display='flex'}function closeAdd(){document.getElementById('add').style.display='none'}function addPlant(){let name=n.value.trim();if(!name)return alert('Enter a plant name.');let type=t.value;db.plants.push({id:Date.now(),name,type,emoji:em(type),water:+w.value||7,fert:+f.value||30,light:l.value,location:loc.value.trim(),notes:notes.value.trim(),lastWater:iso(),lastFert:iso()});save();closeAdd();n.value='';show('plants')}function removePlant(id){if(confirm('Delete this plant?')){db.plants=db.plants.filter(p=>p.id!==id);save();show('plants')}}render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+</script></body></html>
