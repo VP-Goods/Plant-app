@@ -1,0 +1,40 @@
+[
+   {
+      "maxClientVersion" : "1.27.0",
+      "minClientVersion" : "1.21.13",
+      "priority" : 1000,
+      "requiredTreatmentTag" : "mc-b-creator-multiplayer",
+      "type" : "resources",
+      "uuid" : "0b76fc64-3977-4c27-9b9d-6084adb55e78",
+      "version" : "1.0.1"
+   },
+   {
+      "maxClientVersion" : "1.27.0",
+      "minClientVersion" : "1.21.13",
+      "priority" : 1000,
+      "requiredTreatmentTag" : "mc-c-discover",
+      "type" : "resources",
+      "uuid" : "63cb7de1-7337-40e8-a939-b959659325af",
+      "version" : "1.0.1"
+   },
+   {
+      "maxClientVersion" : "1.27.0",
+      "minClientVersion" : "1.21.13",
+      "priority" : 1000,
+      "requiredTreatmentTag" : "mc-d-multiplayer-experiences",
+      "type" : "resources",
+      "uuid" : "a1924966-9788-4d3a-95c3-14a482971fbd",
+      "version" : "1.0.1"
+   },
+   {
+      "endDate" : "2018-12-15T15:00:00Z",
+      "maxClientVersion" : "65535.65535.65535",
+      "minClientVersion" : "1.7.0",
+      "priority" : 1000,
+      "requiredTreatmentTag" : "mc-rp-xbltomsa",
+      "startDate" : "2018-09-05T15:00:00Z",
+      "type" : "resources",
+      "uuid" : "d41f7a19-3475-4d3b-8ffa-80e2b9734be2",
+      "version" : "1.0.0"
+   }
+]
