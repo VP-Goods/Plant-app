@@ -1,1 +1,1 @@
-PlantCare v9: Indoor Find light selection now displays five visible radio options, not a collapsed dropdown. Other v8 features retained. Upload the five app files to the GitHub repository root.
+PlantCare v10: automatically estimate indoor light from window direction and obstructions; optional manual override. Upload the five web app files to your GitHub Pages repository root.
