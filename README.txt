@@ -1,1 +1,1 @@
-PlantCare v5 Guided Care: location autofill and locked outdoor weather fields, preview basics, detailed collection care guides, and symptom-guided photo health check. Photo check does not include automated visual diagnosis. Upload five web files to GitHub Pages root.
+PlantCare v6: no health photo upload; health check includes soil and watering method; Phalaenopsis orchid growing-method choices; approximate historical hardiness zone and 7-day regional sunshine using location. Upload the five app files to GitHub repository root.
