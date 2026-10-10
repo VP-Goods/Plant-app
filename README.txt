@@ -1,1 +1,1 @@
-PlantCare v4 — Search Only Plant Finder. Plants appear only after tapping Search for Plants. Includes optional location weather preset, window scanner, plant photos and tap-to-view details. Upload the five app files to GitHub Pages root.
+PlantCare v5 Guided Care: location autofill and locked outdoor weather fields, preview basics, detailed collection care guides, and symptom-guided photo health check. Photo check does not include automated visual diagnosis. Upload five web files to GitHub Pages root.
