@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f7f2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PlantCare"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><title>PlantCare</title><style>
 *{box-sizing:border-box}body{margin:0;background:#edf2ea;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#203027}.app{max-width:460px;margin:auto;min-height:100vh;background:#f7f9f5;padding-bottom:85px}header{padding:28px 20px 14px;display:flex;justify-content:space-between;align-items:center}.brand{font-size:26px;font-weight:850}.sub,.meta{color:#78847b;font-size:12px}.add{border:0;background:#e1ede0;color:#416b4b;width:44px;height:44px;border-radius:15px;font-size:24px}main{padding:0 18px}.hidden{display:none}.hero{background:linear-gradient(135deg,#dbeadb,#eef4e9);padding:22px;border-radius:27px;margin-bottom:21px}.hero h1{margin:0 0 7px;font-size:26px}.hero p{margin:0;color:#586c5e;font-size:14px}.section{display:flex;justify-content:space-between;align-items:center;margin:21px 3px 11px}.section h2{margin:0;font-size:18px}.link{border:0;background:none;color:#477452;font-weight:650}.card{background:white;border:1px solid #e3eae2;border-radius:21px;padding:15px;margin-bottom:11px;box-shadow:0 8px 25px #243c2810}.row{display:flex;align-items:center;gap:13px}.grow{flex:1}.pic{width:57px;height:57px;border-radius:18px;background:#e6efe3;display:grid;place-items:center;font-size:30px}.name{font-weight:780;font-size:15px}.meta{margin-top:4px}.badge{font-size:11px;padding:6px 9px;border-radius:10px;background:#f6ead1;color:#806122;white-space:nowrap}.good{background:#e2f0e2;color:#47724e}.done{border:0;background:#477452;color:white;border-radius:11px;padding:9px 11px;font-weight:700}.taskicon{font-size:23px;width:36px;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.stat b{font-size:25px}.stat span{display:block;color:#78847b;font-size:12px;margin-top:4px}.empty{text-align:center;color:#78847b;padding:30px}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(460px,100%);height:75px;background:#fff;border-top:1px solid #e4eae3;display:flex;justify-content:space-around;align-items:center}.nav button{border:0;background:none;color:#89938b;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center}.nav button.active{color:#477452;font-weight:750}.nav i{font-style:normal;font-size:21px}.overlay{position:fixed;inset:0;background:#0006;display:none;align-items:flex-end;z-index:20}.sheet{background:white;width:min(460px,100%);margin:auto;border-radius:28px 28px 0 0;padding:22px;max-height:90vh;overflow:auto}.sheet h2{margin-top:0}.field{margin:12px 0}.field label{display:block;font-size:12px;color:#78847b;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #dce5dc;border-radius:12px;font:inherit}.field textarea{min-height:70px}.primary,.secondary,.danger{width:100%;padding:13px;border-radius:14px;font-weight:750;margin-top:8px}.primary{border:0;background:#477452;color:white}.secondary{border:1px solid #e0e7df;background:white}.danger{border:0;background:#fff0ee;color:#9b4c43}.profile{background:linear-gradient(135deg,#dcebdc,#f0f5ed);border-radius:27px;padding:22px}.profile .big{font-size:52px}.profile h1{margin:8px 0 3px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.chip{font-size:11px;background:white;padding:7px 9px;border-radius:10px}.back{border:0;background:none;color:#477452;font-weight:700;margin-bottom:10px}.note{font-size:13px;line-height:1.55;color:#59675e}
 #findResults .match{display:flex;gap:12px;align-items:flex-start}.matchEmoji{font-size:30px;background:#e6efe3;border-radius:15px;padding:12px}.matchText{flex:1}.score{font-weight:800;color:#477452}.why{font-size:12px;color:#586a5e;line-height:1.5;margin:8px 0}.smallbtn{border:0;background:#e2f0e2;color:#376b43;padding:9px 12px;border-radius:11px;font-weight:750}.pill{font-size:11px;color:#617369;background:#edf3ea;border-radius:9px;padding:5px 8px;display:inline-block;margin:3px 4px 0 0}
-.plant-photo{width:100%;height:170px;object-fit:cover;border-radius:16px;background:#e6efe3;display:block;margin-bottom:12px}.photo-fallback{display:grid;place-items:center;font-size:65px}.detail-photo{height:220px}.tap-detail{border:0;background:transparent;padding:0;text-align:left;color:inherit;width:100%;cursor:pointer}.geo-note{font-size:12px;color:#566b5b;line-height:1.5}
+.plant-photo{width:100%;height:170px;object-fit:cover;border-radius:16px;background:#e6efe3;display:block;margin-bottom:12px}.photo-fallback{display:grid;place-items:center;font-size:65px}.photo-empty{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-size:13px;color:#647569;background:#eef3ed}.detail-photo{height:220px}.tap-detail{border:0;background:transparent;padding:0;text-align:left;color:inherit;width:100%;cursor:pointer}.geo-note{font-size:12px;color:#566b5b;line-height:1.5}
 .field select:disabled{background:#edf3ee;color:#536c59;opacity:1}.auto-label{font-size:11px;color:#477452;margin-top:5px}.care-block{background:#fff;border:1px solid #e3eae2;border-radius:17px;padding:15px;margin:10px 0;line-height:1.55}.care-block h3{margin:0 0 8px;font-size:15px}.care-block p{margin:0;font-size:13px;color:#4b5e51}.scan-photo{max-width:100%;max-height:250px;object-fit:contain;border-radius:15px;margin-top:10px}.tiny{font-size:12px;color:#647569;line-height:1.55}.scan-choice{display:block;margin:8px 0;font-size:13px}.scan-choice input{margin-right:8px}.light-options{display:grid;gap:8px;margin-top:8px}.light-option{display:flex;align-items:center;gap:9px;padding:12px 13px;border:1px solid #dce7dc;border-radius:13px;background:#f8fbf7;font-size:14px;font-weight:600;cursor:pointer}.light-option:has(input:checked){border-color:#477452;background:#e6f1e5;color:#2c6339}.light-option input{accent-color:#477452;width:18px;height:18px}</style></head><body><div class="app"><header><div><div class="brand">PlantCare 🌿</div><div class="sub" id="date"></div></div><button class="add" onclick="openAdd()">＋</button></header>
 <main id="home"><div class="hero"><h1 id="greet"></h1><p id="summary"></p></div><div class="section"><h2>Today</h2><button class="link" onclick="show('schedule')">Schedule</button></div><div id="tasks"></div><div class="section"><h2>Your plants</h2><button class="link" onclick="show('plants')">See all</button></div><div id="preview"></div><div class="section"><h2>Overview</h2></div><div class="grid"><div class="card stat"><b id="pc">0</b><span>plants</span></div><div class="card stat"><b id="hc">0</b><span>completed tasks</span></div></div></main>
 <main id="plants" class="hidden"><div class="section"><h2>My plants</h2><button class="link" onclick="openAdd()">＋ Add</button></div><div id="plantlist"></div></main>
@@ -192,20 +192,42 @@ async function startCompass(){
   if(navigator.mediaDevices?.getUserMedia){try{windowStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});let v=document.getElementById('windowVideo');v.srcObject=windowStream;v.style.display='block';document.getElementById('cameraStop').style.display='block'}catch(e){/* camera optional */}}
  }catch(e){status.textContent='Unable to access sensors. Choose the direction manually.'}
 }
-// Photos come from Wikimedia Commons' openly licensed thumbnail API; failures fall back to emoji.
+// Only show actual photographic plant images; never replace missing photos with drawings.
+// Wikimedia Commons search results are screened by file type, filename and metadata.
 const plantPhotos={};
 async function loadPlantPhoto(name){
- if(plantPhotos[name]!==undefined)return plantPhotos[name];
+ if(Object.prototype.hasOwnProperty.call(plantPhotos,name))return plantPhotos[name];
  const terms={'Ficus Bonsai':'Ficus microcarpa bonsai','Coneflower (Echinacea)':'Echinacea purpurea','Sedum (Stonecrop)':'Hylotelephium spectabile','Coral Bells (Heuchera)':'Heuchera','Panicle Hydrangea':'Hydrangea paniculata','Golden Pothos':'Epipremnum aureum','Heartleaf Philodendron':'Philodendron hederaceum','Monstera Deliciosa':'Monstera deliciosa','Hoya Carnosa':'Hoya carnosa','Snake Plant':'Dracaena trifasciata','ZZ Plant':'Zamioculcas zamiifolia','Spider Plant':'Chlorophytum comosum'};
+ const term=terms[name]||name;
+ const reject=/illustrat|drawing|paint|sketch|watercolou?r|artwork|diagram|icon|clipart|vector|botanical plate|engraving|lithograph|render|cartoon|poster|stamp|herbarium|logo|silhouette|digitally generated|ai.generated/i;
  try{
-  const url='https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent('filetype:bitmap '+(terms[name]||name)+' plant')+'&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url|mime&iiurlwidth=600&format=json&origin=*';
-  const j=await (await fetch(url)).json();const pages=Object.values(j.query?.pages||{});
-  const good=pages.find(x=>x.imageinfo?.[0]?.mime?.startsWith('image/')&&x.imageinfo[0].thumburl);
+  const q='https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent('filetype:bitmap '+term+' plant photograph')+'&gsrnamespace=6&gsrlimit=25&prop=imageinfo&iiprop=url|mime|extmetadata&iiurlwidth=640&format=json&origin=*';
+  const r=await fetch(q);if(!r.ok)throw Error('Photo search unavailable');
+  const j=await r.json();const pages=Object.values(j.query?.pages||{});
+  const good=pages.find(x=>{
+   const info=x.imageinfo?.[0];if(!info?.thumburl||!['image/jpeg','image/webp'].includes(info.mime))return false;
+   const meta=info.extmetadata||{};
+   const description=(meta.ImageDescription?.value||'').replace(/<[^>]*>/g,' ');
+   return !reject.test(x.title+' '+description) && !/\.(svg|gif|png|tif|tiff)$/i.test(x.title);
+  });
   plantPhotos[name]=good?.imageinfo[0].thumburl||null;
- }catch(e){plantPhotos[name]=null}return plantPhotos[name];
+ }catch(e){plantPhotos[name]=null}
+ return plantPhotos[name];
 }
-function photoMarkup(p,large=false){return `<div id="photo-${catalog.findIndex(x=>x.name===p.name)}" class="plant-photo photo-fallback ${large?'detail-photo':''}">${p.emoji}</div>`}
-async function populatePhoto(p,container=document){const id='photo-'+catalog.findIndex(x=>x.name===p.name);const els=container.querySelectorAll('[id="'+id+'"]');const url=await loadPlantPhoto(p.name);if(!url)return;els.forEach(el=>{if(!el.isConnected)return;const img=document.createElement('img');img.src=url;img.alt='Photo of '+p.name;img.className=el.className.replace('photo-fallback','');img.onerror=()=>{img.replaceWith(el)};el.replaceWith(img)})}
+function photoMarkup(p,large=false){return `<div id="photo-${catalog.findIndex(x=>x.name===p.name)}" class="plant-photo photo-empty ${large?'detail-photo':''}" role="status">Loading plant photo…</div>`}
+async function populatePhoto(p,container=document){
+ const id='photo-'+catalog.findIndex(x=>x.name===p.name);
+ const els=container.querySelectorAll('[id="'+id+'"]');
+ const url=await loadPlantPhoto(p.name);
+ els.forEach(el=>{
+  if(!el.isConnected)return;
+  if(!url){el.textContent='Photograph unavailable';return}
+  const img=document.createElement('img');img.src=url;img.alt='Photograph of '+p.name;
+  img.className=el.className.replace('photo-empty','');
+  img.onerror=()=>{if(img.isConnected){const replacement=document.createElement('div');replacement.className=el.className;replacement.textContent='Photograph unavailable';img.replaceWith(replacement)}};
+  el.replaceWith(img);
+ });
+}
 function showPlantInfo(name){
  const p=catalog.find(x=>x.name===name);if(!p)return;
  document.getElementById('plantInfo').classList.remove('hidden');

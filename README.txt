@@ -1,1 +1,1 @@
-PlantCare v10: automatically estimate indoor light from window direction and obstructions; optional manual override. Upload the five web app files to your GitHub Pages repository root.
+PlantCare v11 — Real plant photographs only. Plant Finder screens Wikimedia Commons photo results and displays Photograph unavailable if no suitable photograph is found. Upload the five app files to GitHub Pages.
