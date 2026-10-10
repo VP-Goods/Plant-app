@@ -1,5 +1,1 @@
-PlantCare v2 PWA
-
-Upload index.html, manifest.webmanifest, service-worker.js, icon-192.png and icon-512.png to the root of an HTTPS host. On iPhone, open in Safari and choose Share > Add to Home Screen.
-
-Included: dashboard, plant profiles, watering/fertilizing schedules, care history, add/delete plants, notes, light/location fields, offline caching and local persistence.
+PlantCare v3 with Plant Finder. Upload the five app files to the root of your existing GitHub Pages repository and commit changes. Reload the app after deployment. The Finder includes compass-assisted direction estimation where supported, optional camera preview, manual selection, indoor/outdoor conditions, USDA zone, a curated starter catalog, compatibility scoring, and Add to My Plants. Device sensors require HTTPS, browser permission, and compatible hardware. No photo AI classification, automatic GPS zone lookup, push notifications, or cloud sync. All data stays in local browser storage.

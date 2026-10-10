@@ -1,7 +1,9 @@
 {
   "name": "PlantCare",
   "short_name": "PlantCare",
+  "description": "Plant care tracker with smart Plant Finder",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f5f7f2",
   "theme_color": "#f5f7f2",
